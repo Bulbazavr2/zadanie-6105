@@ -1,0 +1,120 @@
+
+//МСоздание тендера
+POST http://0.0.0.0:8080/api/tenders/new
+Content-Type: application/json
+
+{
+  "name": "Newdasd Tender Example",
+  "description": "This is a adastest tender for the new API endpoint",
+  "serviceType": "Construction",
+  "status": "CREATED",
+  "organizationId": "5a20ffda-e659-4991-993a-04354ce66af3",
+  "creatorUsername": "layla40"
+}
+
+###
+//список тендеров
+GET http://localhost:8080/api/tenders
+Content-Type: application/json
+
+###
+//тендеры пользователя
+GET http://127.0.0.1:8080/api/tenders/my?username=layla40
+
+
+###
+GET http://localhost:8080/api/tenders/dba9196e-9f8e-4d0f-aa58-d5bc4e8f92d8/status
+Content-Type: application/json
+
+###
+# Изменить статус тендера
+PUT http://localhost:8080/api/tenders/dba9196e-9f8e-4d0f-aa58-d5bc4e8f92d8/status
+Content-Type: application/json
+
+{
+  "status": "CREATED",
+  "username": "layla40"
+}
+
+###
+PATCH http://localhost:8080/api/tenders/dba9196e-9f8e-4d0f-aa58-d5bc4e8f92d8/edit
+Content-Type: application/json
+
+{
+  "username": "layla40",
+  "name": "HEllo",
+  "description": "This is a test tender for the new API endpoint",
+  "serviceType": "Construction"
+}
+
+###
+
+PUT http://localhost:8080/api/tenders/8cf443ed-554f-4f1f-b5dd-8d2b18520816/rollback/12
+Content-Type: application/json
+
+{
+  "username": "layla40"
+}
+
+
+###
+//Создание bid
+POST http://localhost:8080/api/bids/new
+Content-Type: application/json
+
+
+  {
+  "name": "string",
+  "description": "string",
+  "tenderId": "8cf443ed-554f-4f1f-b5dd-8d2b18520816",
+  "authorType": "User",
+  "authorId": "27134024-48e7-4797-a613-ad8906cc0a24"
+}
+
+###
+//Получение bids пользователя
+GET http://localhost:8080/api/bids/my
+Content-Type: application/json
+
+{
+  "username": "layla40"
+}
+
+###
+
+//Получение bids по tenderId
+GET http://localhost:8080/api/bids/8cf443ed-554f-4f1f-b5dd-8d2b18520816/list
+Content-Type: application/json
+
+{
+  "username": "layla40"
+}
+
+###
+GET http://localhost:8080/api/bids/93174769-2f95-442c-8ac2-9df2f4739bc0/status
+Content-Type: application/json
+
+{
+  "username": "layla40"
+}
+
+###
+//Добавить несоответсвие bidId
+PUT http://localhost:8080/api/bids/3174769-2f95-442c-8ac2-9df2f4739bc0/status
+Content-Type: application/json
+
+{
+  
+  "username": "layla40",
+  "newStatus": "UPDATED"
+}
+
+###
+PATCH http://localhost:8080/api/bids/93174769-2f95-442c-8ac2-9df2f4739bc0/edit?username=layla40
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "string",
+  "description": "string"
+}
